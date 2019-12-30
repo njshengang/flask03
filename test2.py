@@ -1,5 +1,6 @@
 from random import randint
 from math import sqrt
+import sys
 def play():
    a=100
    b=200
@@ -36,26 +37,77 @@ def hanoi(n,a,b,c):
         print(a,'-->',c)
         hanoi(n-1,b,a,c)
 def trim(s):
-    if len(s)==0:
-        return s
-    n=0
-    while ord(s[n])==32:
-        n=n+1
-    s=s[n:]
-    m=len(s)
-    while ord(s[m-1])==32:
-        m=m-1
-    s=s[:m]
+#函数说明：去除字符串首尾的空格，返回一个新的字符串
+    if len(s) == 0:
+        s = ''
+    else:
+        if s[0] == ' ':
+            return trim(s[1:])
+        if s[-1] == ' ':
+            return trim(s[:-1])
     return s
-
+    # if len(s)==0:
+    #     return s
+    # n=0
+    # while ord(s[n])==32:
+    #     n=n+1
+    # s=s[n:]
+    # m=len(s)
+    # if len(s)==0:
+    #     return s
+    # while ord(s[m-1])==32:
+    #     m=m-1
+    # s=s[:m]
+    # return s
+def findMinAndMax(L):
+#查找一个list中最小和最大值，并返回一个tuple：
+    if len(L)==0:
+        return (None,None)
+    min=sys.maxsize
+    max=-min
+    for i in L:
+        if i<min:
+            min=i
+        if i>max:
+            max=i
+    return( min,max )
 
 
 
 if __name__=="__main__":
-    s="   abc"
-    print(len(s))
-    print(trim(s))
-    print(len(s))
+    # list1=[3,5,7,9,11,1,-56,999,1079]
+    # print(findMinAndMax(list1))
+    # 测试
+    if findMinAndMax([]) != (None, None):
+        print('测试失败!')
+    elif findMinAndMax([7]) != (7, 7):
+        print('测试失败!')
+    elif findMinAndMax([7, 1]) != (1, 7):
+        print('测试失败!')
+    elif findMinAndMax([7, 1, 3, 9, 5]) != (1, 9):
+        print('测试失败!')
+    else:
+        print('测试成功!')
+    # s="   abc"
+    # print(len(s))
+    # s=trim(s)
+    # print(s)
+    # print(len(s))
+    # 测试:
+    # if trim('hello  ') != 'hello':
+    #     print('测试失败!')
+    # elif trim('  hello') != 'hello':
+    #     print('测试失败!')
+    # elif trim('  hello  ') != 'hello':
+    #     print('测试失败!')
+    # elif trim('  hello  world  ') != 'hello  world':
+    #     print('测试失败!')
+    # elif trim('') != '':
+    #     print('测试失败!')
+    # elif trim('    ') != '':
+    #     print('测试失败!')
+    # else:
+    #     print('测试成功!')
 
     # play()
     # print(my_abs('sg'))
