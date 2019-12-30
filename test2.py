@@ -35,10 +35,28 @@ def hanoi(n,a,b,c):
         hanoi(n-1,a,c,b)
         print(a,'-->',c)
         hanoi(n-1,b,a,c)
+def trim(s):
+    if len(s)==0:
+        return s
+    n=0
+    while ord(s[n])==32:
+        n=n+1
+    s=s[n:]
+    m=len(s)
+    while ord(s[m-1])==32:
+        m=m-1
+    s=s[:m]
+    return s
+
 
 
 
 if __name__=="__main__":
+    s="   abc"
+    print(len(s))
+    print(trim(s))
+    print(len(s))
+
     # play()
     # print(my_abs('sg'))
     # print(my_abs(10))
@@ -72,4 +90,4 @@ if __name__=="__main__":
     #         print('测试失败!')
     #     except TypeError:
     #         print('测试成功!')
-    hanoi(6,'a','b','c')
+    # hanoi(6,'a','b','c')
