@@ -1,5 +1,6 @@
 from random import randint
 from math import sqrt
+import os
 import sys
 def play():
    a=100
@@ -71,23 +72,42 @@ def findMinAndMax(L):
         if i>max:
             max=i
     return( min,max )
-
+def fib(max):
+    n, a, b = 0, 0, 1
+    while n < max:
+        # print(b)
+        yield b
+        a, b = b, a + b
+        n = n + 1
+    return 'done'
+def triangles():
 
 
 if __name__=="__main__":
+    f=fib(10)
+    for i in range(10):
+        print(next(f))
+    for n in fib(3):
+        print(n)
+    # k=[d for d in os.listdir('.')]
+    # print(k)
+    # L1 = ['Hello', 'World', 18, 'Apple', None,1.2 , 'HASl']
+    # L2=[s.lower() for s in L1 if isinstance(s,str)]
+    # print(L2)
+
     # list1=[3,5,7,9,11,1,-56,999,1079]
     # print(findMinAndMax(list1))
     # 测试
-    if findMinAndMax([]) != (None, None):
-        print('测试失败!')
-    elif findMinAndMax([7]) != (7, 7):
-        print('测试失败!')
-    elif findMinAndMax([7, 1]) != (1, 7):
-        print('测试失败!')
-    elif findMinAndMax([7, 1, 3, 9, 5]) != (1, 9):
-        print('测试失败!')
-    else:
-        print('测试成功!')
+    # if findMinAndMax([]) != (None, None):
+    #     print('测试失败!')
+    # elif findMinAndMax([7]) != (7, 7):
+    #     print('测试失败!')
+    # elif findMinAndMax([7, 1]) != (1, 7):
+    #     print('测试失败!')
+    # elif findMinAndMax([7, 1, 3, 9, 5]) != (1, 9):
+    #     print('测试失败!')
+    # else:
+    #     print('测试成功!')
     # s="   abc"
     # print(len(s))
     # s=trim(s)
